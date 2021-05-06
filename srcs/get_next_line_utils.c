@@ -6,15 +6,15 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:35:20 by adylewsk          #+#    #+#             */
-/*   Updated: 2020/02/05 18:44:08 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/05/06 21:34:58 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../headers/utils.h"
 
-int		ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
 	if (str == NULL)
@@ -24,7 +24,7 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_findchar(char *str, char c)
+int	ft_findchar(char *str, char c)
 {
 	while (*str && *str != c)
 		str++;
@@ -36,12 +36,13 @@ int		ft_findchar(char *str, char c)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int		i;
+	size_t	i;
 
 	if (!s1 && !s2)
 		return (str = malloc(sizeof(char)));
 	i = ft_strlen(s1) + ft_strlen(s2);
-	if (!(str = malloc(sizeof(char) * (i + 1))))
+	str = malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (s1 && s1[i])
@@ -60,16 +61,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_substr(char *s, int start, int len)
+char	*ft_substr(char *s, int start, size_t len)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
 	i = 0;
-	if (!(str = malloc(sizeof(char) * (len + 1))) || !s)
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL || !s)
 		return (str);
 	*str = 0;
-	if (ft_strlen(s) < start)
+	if (ft_strlen(s) < (size_t)start)
 		return (str);
 	while (s[start] && i < len)
 	{
