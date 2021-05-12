@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 21:57:38 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/07 00:39:59 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:05:08 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,9 @@ int	open_file(char *path, char	*extension)
 
 	fd = 0;
 	if (check_file_extension(path, extension) == EXIT_FAILURE)
-	{
-		printf("ERROR\nopen_file : File must be in %s\n", extension);
-		exit(EXIT_FAILURE);
-	}
+		exit(my_error(2, extension));
 	fd = open(path, O_RDWR);
 	if (fd == -1)
-	{
-		printf("ERROR\nopen \"%s\" : %s", path, strerror(errno));
-		exit(EXIT_FAILURE);
-	}
+		exit(my_error(3, path));
 	return (fd);
 }

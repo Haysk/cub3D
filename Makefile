@@ -2,12 +2,17 @@
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-BUFFER_SIZE = 64
+BUFFER = 64
 
 # MINILIBX
 
 MLX_DIR = minilibx-linux
 MLX = libmlx.a
+
+# LIBFT
+
+LIBFT_DIR = libft
+LIBFT = libft.a
 
 # Path
 
@@ -16,9 +21,10 @@ SRCS_PATH = srcs/
 HEADERS_PATH = headers/
 
 SRCS = main.c \
-		get_next_line.c get_next_line_utils.c \
-		utils_ft.c utils.c file.c initialize.c settings.c parsing.c
-
+		error/error.c \
+		utils/get_next_line.c utils/get_next_line_utils.c \
+		utils/utils.c utils/utils_ft.c \
+		close.c file.c initialize.c settings.c parsing.c
 
 OBJS = $(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
 
@@ -32,11 +38,12 @@ NAME = cube3D
 all :	$(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
+	@make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-		@mkdir -p $(OBJS_PATH)
-		${CC} $(CFLAGS) -D BUFFER_SIZE=$(BUFFER_SIZE) -I $(HEADERS_PATH) -I $(MLX_DIR) -c $< -o $@
+		@mkdir -p $(OBJS_PATH) $(addprefix $(OBJS_PATH), error) $(addprefix $(OBJS_PATH), utils)
+		${CC} $(CFLAGS) -D BUFFER_SIZE=$(BUFFER) -I $(HEADERS_PATH) -I $(LIBFT_DIR) -I $(MLX_DIR) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS_PATH)

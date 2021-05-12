@@ -6,11 +6,11 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:35:25 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/06 21:53:18 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/05/10 16:27:55 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/utils.h"
+#include "../headers/cub.h"
 
 int	ft_firstline(char **save, char **line)
 {
@@ -54,7 +54,7 @@ int	ft_readfile(int fd, char **save)
 			return (-1);
 		}
 		buffer[i] = 0;
-		*save = ft_strjoin(*save, buffer);
+		*save = ft_strjoin_gnl(*save, buffer);
 	}
 	free(buffer);
 	if (i > 0)

@@ -6,84 +6,103 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:43:04 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/07 01:09:22 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:27:12 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub.h"
 
-t_resolution	set_res(char *line, t_resolution res)
+int	set_res(char **tab, t_resolution *res)
 {
-	size_t	i;
-
-	i = whitespace_size(line);
-	if (line[i] == 'R')
+	if (res->width < 0)
 	{
-		res.width = 1;
-		res.height = 1;
-		printf("set_resolution : %s\n", line);
-		res = parse_res(line + i + 1, res);
-		return (res);
+		if (ft_tablen(tab) == 2 && ft_tabisdigit(tab))
+		{
+			res->width = ft_atoi(tab[0]);
+			res->height = ft_atoi(tab[1]);
+			return (TRUE);
+		}
+		return (ERROR);
 	}
-	return (res);
+	return (FALSE);
 }
 
-t_color	*set_colors(char *line, t_color *colors)
+int	set_colors(char **tab, t_color *colors)
+{
+	if (colors->red < 0)
+	{
+		if (ft_tablen(tab) == 3 && ft_tabisdigit(tab))
+		{
+			colors->red = ft_atoi(tab[0]);
+			colors->green = ft_atoi(tab[1]);
+			colors->blue = ft_atoi(tab[2]);
+			return (TRUE);
+		}
+		return (ERROR);
+	}
+	return (FALSE);
+}
+
+int	set_textures(char **tab, t_texture *textures)
+{
+	if (textures->fd < 0)
+		if (ft_tablen(tab) == 1)
+		{
+			textures->path = ft_substr(*tab, 0, ft_strlen(*tab));
+			textures->fd = 1;
+			return (TRUE);
+		}
+	return (FALSE);
+}
+
+int	tab_funptr(char **tab, t_params *params)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = whitespace_size(line);
-	while (colors[i].name)
+	if (!*tab || !tab[1])
+		return (ERROR);
+	if (ft_strncmp(*tab, params->res->name, ft_strlen(*tab)) == 0)
+		return (params->res->set(tab + 1, params->res));
+	while (params->colors[i].name)
 	{
-		if (ft_memcmp(line + j, colors[i].name, 1) == EXIT_SUCCESS)
-		{
-			colors[i].red = 1;
-			colors[i].green = 1;
-			colors[i].blue = 1;
-			printf("find_color : %s\n", line);
-			return (colors);
-		}
+		if (ft_strncmp(*tab, params->colors[i].name, ft_strlen(*tab) + 1) == 0)
+			return (params->colors[i].set(tab + 1, &params->colors[i]));
 		i++;
 	}
-	return (colors);
-}
-
-t_texture	*set_textures(char *line, t_texture *textures)
-{
-	size_t	i;
-	size_t	j;
-
 	i = 0;
-	j = whitespace_size(line);
-	while (textures[i].name)
+	while (params->textures[i].name)
 	{
-		if (ft_memcmp(line + j, textures[i].name,
-				ft_strlen(textures[i].name)) == EXIT_SUCCESS)
-		{
-			textures[i].path = "trouve";
-			textures[i].fd = 1;
-			printf("find_texture : %s\n", line);
-			return (textures);
-		}
+		if (ft_strncmp(*tab, params->textures[i].name, ft_strlen(*tab) + 1) == 0)
+			return (params->textures[i].set(tab + 1, &params->textures[i]));
 		i++;
 	}
-	return (textures);
+	return (ERROR);
 }
 
-t_params	set_params(char *line, t_params params)
+int	set_params(char *line, t_params *params)
 {
+	char	**tab;
+	
 	errno = 0;
-	params.res = set_res(line, params.res);
-	params.colors = set_colors(line, params.colors);
-	params.textures = set_textures(line, params.textures);
+	if (empty_line(line))
+	{
+		printf("empty line\n");
+		return (EXIT_FAILURE);
+	}
+	tab = my_split(line, SEPARATORS);
+	ft_puttab(tab);
+	printf("|%s| |%s|\n", line, *tab);
+	printf("\n");
+	if (tab_funptr(tab, params) == ERROR)
+		printf("ERROR\nset_params : funptr NULL\n\n");
+	// params.colors = set_colors(tab, params.colors);
+	// params.textures = set_textures(tab, params.textures);
+	free_tab(tab);
 	if (errno != 0)
 	{
-		printf("free all\n");
-		close(params.fd);
-		free(line);
-		exit(EXIT_FAILURE);
+		free_all(line, params);
+		exit(my_error(errno, NULL));
 	}
-	return (params);
+	return (EXIT_SUCCESS);
 }

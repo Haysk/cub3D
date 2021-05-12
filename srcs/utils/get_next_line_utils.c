@@ -6,23 +6,11 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:35:20 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/06 21:34:58 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/05/11 21:54:50 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/utils.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (*str && str[i])
-		i++;
-	return (i);
-}
+#include "../headers/cub.h"
 
 int	ft_findchar(char *str, char c)
 {
@@ -33,7 +21,7 @@ int	ft_findchar(char *str, char c)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;
@@ -58,27 +46,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str[i] = 0;
 	free(s1);
-	return (str);
-}
-
-char	*ft_substr(char *s, int start, size_t len)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = malloc(sizeof(char) * (len + 1));
-	if (str == NULL || !s)
-		return (str);
-	*str = 0;
-	if (ft_strlen(s) < (size_t)start)
-		return (str);
-	while (s[start] && i < len)
-	{
-		str[i] = s[start];
-		i++;
-		start++;
-	}
-	str[i] = 0;
 	return (str);
 }
