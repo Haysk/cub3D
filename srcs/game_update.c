@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   game_update.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 23:04:15 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/25 19:04:21 by adylewsk         ###   ########.fr       */
+/*   Created: 2021/08/26 02:12:59 by adylewsk          #+#    #+#             */
+/*   Updated: 2021/08/26 05:09:36 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub.h"
 
-size_t	whitespace_size(const char *str)
+void	game_update(t_data *data)
 {
-	size_t	i;
-
-	i = 0;
-	if (!str || !*str)
-		return (0);
-	while (str[i] && ft_strchr(WHITESPACES, str[i]))
-		i++;
-	return (i);
-}
-
-int	empty_line(char *str)
-{
-	if (!str || !*str)
-		return (TRUE);
-	if (whitespace_size(str) == ft_strlen(str))
-		return (TRUE);
-	return (FALSE);
+	slow_loop();
+	data->player.x ++;
+	data->player.y ++;
 }

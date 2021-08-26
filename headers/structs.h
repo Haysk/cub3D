@@ -6,27 +6,18 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:05:32 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/12 17:56:00 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/26 04:48:28 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_resolution
-{
-	char	*name;
-	int		width;	// largeur
-	int		height;	// hauteur
-	int		(*set)(char **tab, struct s_resolution *res);
-}				t_resolution;
-
 typedef struct s_texture
 {
 	char	*name;
 	char	*path;
-	int		fd;
-	int		(*set)(char **tab, struct s_texture *texture);
+	int		is_set;
 }				t_texture;
 
 typedef struct s_color
@@ -35,21 +26,62 @@ typedef struct s_color
 	int		red;
 	int		green;
 	int		blue;
-	int		(*set)(char **tab, struct s_color *color);
+	int		is_set;
 }				t_color;
 
-typedef struct s_params
+typedef struct s_player
 {
-	int				fd;
-	t_resolution	*res;
-	t_color			*colors;
-	t_texture		*textures;
-}				t_params;
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+	int		turn_direction;
+	int		walk_direction;
+	float	rotation_angle;
+	float	walk_speed;
+	float	turn_speed;
+	int		is_set;
+}				t_player;
 
-typedef struct s_tab_funptr
+typedef struct s_image {
+	void	*img;
+	int		*addr;
+	int		with;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_image;
+
+typedef struct s_rect
 {
-	char	*name;
-	int		(*set)(char **tab, t_params *params);
-}				t_tab_funptr;
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+}				t_rect;
+
+typedef struct s_data
+{
+	int			fd;
+	int			map_x;
+	int			map_y;
+	float		scale;
+	int			map_is_set;
+	int			params_is_set;
+	int			end_file;
+	char		*line;
+	char		**map;
+	t_color		*colors;
+	t_texture	*textures;
+	void		*mlx;
+	void		*win;
+	int			win_width;
+	int			win_height;
+	t_player	player;
+	t_image		renderer;
+	t_rect		rect;
+	int			color;
+}				t_data;
 
 #endif

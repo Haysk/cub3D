@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:35:36 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/05/12 17:55:13 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/25 23:02:02 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,40 @@ int	free_textures(t_texture *textures)
 {
 	while (textures->name)
 	{
-		if (textures->fd)
-			close(textures->fd);
 		if (textures->path != NULL)
 			free(textures->path);
 		textures++;
 	}
-	return (EXIT_SUCCESS);
+	return (TRUE);
 }
 
-int	free_tab(char **tab)
+void	free_file(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	if (tab == NULL)
-		return (EXIT_FAILURE);
-	while (tab[i])
+	if (data->line)
 	{
-		free(tab[i]);
-		i++;
+		while (get_next_line(data->fd, &data->line));
+		free(data->line);
 	}
-	free(tab);
-	return (EXIT_SUCCESS);
+	if (data->fd)
+		close(data->fd);
 }
 
-int	free_all(char *line, t_params *params)
+int	free_all(t_data *data)
 {
+	free_file(data);
 	printf("free all\n");
-	if (params->fd)
-		close(params->fd);
-	free_textures(params->textures);
-	if (line != NULL)
-		free(line);
-	return (EXIT_SUCCESS);
+	free_textures(data->textures);
+	ft_freetab(data->map);
+	return (TRUE);
+}
+
+int	close_mlx(t_data *data)
+{
+	free_all(data);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
+	exit(EXIT_SUCCESS);
 }
