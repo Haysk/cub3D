@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:43:04 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 00:17:11 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/27 01:44:34 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int	set_colors(char **tab, t_color *colors)
 int	set_textures(char **tab, t_texture *textures)
 {
 	if (textures->is_set == 0)
+	{
 		if (ft_tablen(tab) == 1)
 		{
 			textures->path = ft_substr(*tab, 0, ft_strlen(*tab));
 			textures->is_set = 1;
 			return (TRUE);
 		}
+	}
 	return (FALSE);
 }
 
@@ -67,7 +69,7 @@ int	tab_funptr(char **tab, t_data *data)
 int	set_params(t_data *data)
 {
 	char	**tab;
-	
+
 	tab = my_split(data->line, SEPARATORS);
 	ft_puttab(tab);
 	printf("|%s| |%s|\n", data->line, *tab);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_is_setialization.c                              :+:      :+:    :+:   */
+/*   data_initialization.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 01:47:17 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 00:08:55 by adylewsk         ###   ########.fr       */
+/*   Created: 2021/08/27 01:40:56 by adylewsk          #+#    #+#             */
+/*   Updated: 2021/08/27 01:41:42 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_data	new_data(int fd)
 {
 	t_data	data;
-	
+
 	data.fd = fd;
 	data.params_is_set = FALSE;
 	data.player.is_set = FALSE;
@@ -39,6 +39,7 @@ t_color	*init_colors(void)
 		{.name = "F", .red = -1, .green = -1, .blue = -1, .is_set = 0},
 		{NULL}
 	};
+
 	return (colors);
 }
 
@@ -51,6 +52,7 @@ t_texture	*init_textures(void)
 		{.name = "WE", .path = NULL, .is_set = 0},
 		{NULL}
 	};
+
 	return (textures);
 }
 

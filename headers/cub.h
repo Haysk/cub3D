@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 19:31:37 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 04:55:24 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/29 02:39:20 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,24 @@ int			check_map(t_data *data);
 int			check_borders(t_data *data);
 void		check_params(t_data *data);
 
-void		new_game(t_data *data);
+// void		new_game(t_data *data);
+int			start(t_data *data);
 void		my_put_pixel(t_image *renderer, int x, int y, int color);
-t_rect		init_rect(int x, int y, int width, int height);
+t_rect		my_rect(int x, int y, int width, int height);
+t_line		my_line(int xa, int ya, int xb, int yb);
 void		put_rect(t_rect rect, t_image *renderer, int color);
+void		put_line(t_line line, t_image *renderer, int color);
 int			game_loop(t_data *data);
-void		slow_loop();
 void		game_setup(t_data *data);
-int			game_input(int key, t_data *data);
+int			key_press(int key, t_data *data);
+int			key_release(int key, t_data *data);
 void		game_update(t_data *data);
 void		game_render(t_data *data);
+
+int			wall_detect(t_data *data, float x, float y, char **map);
+t_inter		horizontal_inter(t_data *data, t_face face);
+t_inter		vertical_inter(t_data *data, t_face face);
+void		cast_all_rays(t_data *data, t_player *player);
 int			close_mlx(t_data *data);
-
-
-
-
 
 #endif

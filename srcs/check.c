@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 23:00:46 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 01:58:42 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/27 01:42:03 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	check_component(t_data *data, int x, int y)
 		{
 			data->player.x = x;
 			data->player.y = y;
+			data->player.rotation_angle = (float)data->map[y][x];
 			data->map[y][x] = '0';
 			data->player.is_set = TRUE;
 		}
@@ -70,7 +71,7 @@ int	check_horizontally(t_data *data, int y)
 int	check_vertically(t_data *data, int x)
 {
 	int	y;
-	int start;
+	int	start;
 
 	y = 0;
 	start = -1;
@@ -109,19 +110,3 @@ int	check_borders(t_data *data)
 	}
 	return (TRUE);
 }
-
-// int	check_borders(t_data *data, int y)
-// {
-// 	int	start;
-// 	int	end;
-// 	int	x;
-
-// 	start = whitespace_size(data->map[y]);
-// 	end = ft_strlen(data->map[y]) - end_whitespace_size(data->map[y]);
-// 	x = start;
-// 	if (data->map[y][start] != WALL || data->map[y][end] != WALL)
-// 		return (FALSE);
-// 	if (y == 0 || y == data->map_y - 1)
-// 		check_borders_top_bottom(data->map[y], start, end);
-	
-// }

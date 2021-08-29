@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 23:21:45 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 01:59:11 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/27 01:40:04 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	add_line_map(t_data *data)
 {
 	char	**map;
-	int	i;
+	int		i;
 
 	i = 0;
 	map = ft_calloc(data->map_y + 1, sizeof(char *));
@@ -35,7 +35,8 @@ int	add_line_map(t_data *data)
 
 int	get_map(t_data *data)
 {
-	while (get_next_line(data->fd, &data->line) && empty_line(data->line));
+	while (get_next_line(data->fd, &data->line)
+		&& empty_line(data->line));
 	while (!data->end_file)
 	{
 		if (!data->line || !*data->line)
