@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:10:49 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 03:07:51 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 03:33:42 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	game_render(t_data *data)
 	data->renderer.addr = (int *)mlx_get_data_addr(data->renderer.img,
 			&data->renderer.bits_per_pixel, &data->renderer.line_length,
 			&data->renderer.endian);
+	render_walls(data, data->rays);
 	render_map(data);
 	render_rays(data, &data->player);
 	render_player(data, &data->player);

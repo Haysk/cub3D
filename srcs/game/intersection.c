@@ -14,12 +14,20 @@
 
 int	inter_wall_detect(t_data *data, int check_x, int check_y, t_inter *axe)
 {	
+	int	x;
+	int	y;
+
 	if (wall_detect(data, check_x, check_y, data->map))
 	{
 		axe->wall_hit_x = axe->next_touch_x;
 		axe->wall_hit_y = axe->next_touch_y;
-		axe->wall_content = data->map[(int)floor(check_y / TILE_SIZE)]
-		[(int)floor(check_x / TILE_SIZE)];
+		y = (int)floor(check_y / TILE_SIZE);
+		if (y >= data->map_y)
+			y = data->map_y - 1;
+		x = (int)floor(check_x / TILE_SIZE);
+		if (x >= data->map_y)
+			x = data->map_y - 1;
+		axe->wall_content = data->map[y][x];
 		axe->found_wall_hit = TRUE;
 		return (TRUE);
 	}
@@ -61,8 +69,8 @@ t_inter	horizontal_inter(t_data *data, t_face face)
 	wall = FALSE;
 	init_horizontal(data, &horiz, face);
 	while (!wall && horiz.next_touch_x >= 0
-		&& horiz.next_touch_x < data->win_width
-		&& horiz.next_touch_y >= 0 && horiz.next_touch_y < data->win_height)
+		&& horiz.next_touch_x <= data->win_width
+		&& horiz.next_touch_y >= 0 && horiz.next_touch_y <= data->win_height)
 	{
 		check_x = horiz.next_touch_x;
 		check_y = horiz.next_touch_y;
@@ -106,8 +114,8 @@ t_inter	vertical_inter(t_data *data, t_face face)
 	init_vertical(data, &verti, face);
 	wall = FALSE;
 	while (!wall && verti.next_touch_x >= 0
-		&& verti.next_touch_x < data->win_width
-		&& verti.next_touch_y >= 0 && verti.next_touch_y < data->win_height)
+		&& verti.next_touch_x <= data->win_width
+		&& verti.next_touch_y >= 0 && verti.next_touch_y <= data->win_height)
 	{
 		check_x = verti.next_touch_x;
 		if (face.left)

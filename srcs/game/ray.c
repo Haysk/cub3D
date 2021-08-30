@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:48:25 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 03:00:05 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 01:34:26 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	cast_all_rays(t_data *data, t_player *player)
 	while (data->rays_id < data->rays_num)
 	{
 		cast_ray(data, player);
-		data->rays_angle += data->fov / data->win_height;
+		data->rays_angle += data->fov / data->win_width;
 		data->rays_id++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 19:31:37 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 02:39:20 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 01:44:51 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <mlx.h>
 # include "utils.h"
-# include "structs.h"
 
 int			open_file(char *path, char *extension);
 
@@ -51,12 +50,14 @@ void		game_setup(t_data *data);
 int			key_press(int key, t_data *data);
 int			key_release(int key, t_data *data);
 void		game_update(t_data *data);
+void		put_texture(t_data *data, int i, int j);
+void		render_walls(t_data *data, t_ray *rays);
 void		game_render(t_data *data);
 
 int			wall_detect(t_data *data, float x, float y, char **map);
 t_inter		horizontal_inter(t_data *data, t_face face);
 t_inter		vertical_inter(t_data *data, t_face face);
 void		cast_all_rays(t_data *data, t_player *player);
-int			close_mlx(t_data *data);
+int			close_mlx(t_data *data, int error);
 
 #endif

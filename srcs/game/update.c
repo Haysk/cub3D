@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:12:59 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 02:14:30 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/29 19:06:25 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	move_player(t_data *data, t_player *player, char **map)
 		player->x = new_player_x;
 		player->y = new_player_y;
 	}
-	printf("%f, %f \n", new_player_x, new_player_y);
 }
 
 void	game_update(t_data *data)

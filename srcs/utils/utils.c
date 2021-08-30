@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 23:04:15 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/25 19:04:21 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:35:58 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,24 @@ int	empty_line(char *str)
 	if (whitespace_size(str) == ft_strlen(str))
 		return (TRUE);
 	return (FALSE);
+}
+
+int	int_to_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	get_color(t_data *data, char *name)
+{
+	int	i;
+
+	i = 0;
+	while (data->colors[i].name)
+	{
+		if (!ft_strncmp(name, data->colors[i].name, ft_strlen(name) + 1))
+			return (int_to_trgb(255, data->colors[i].red,
+					data->colors[i].green, data->colors[i].blue));
+		i++;
+	}
+	return (0);
 }

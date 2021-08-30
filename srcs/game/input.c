@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:11:13 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/27 02:07:39 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 00:16:46 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int key, t_data *data)
 {
 	if (key == 65307)
-		close_mlx(data);
+		close_mlx(data, EXIT_SUCCESS);
 	if (key == UP)
 		data->player.walk_direction = 1;
 	if (key == DOWN)

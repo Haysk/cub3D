@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:30:54 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/27 16:38:36 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:31:56 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <float.h>
 # include <math.h>
 # include "../libft/libft.h"
+# include "structs.h"
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530
@@ -51,5 +52,7 @@ int		get_next_line(int fd, char **line);
 int		check_file_extension(char *path, char *str);
 size_t	whitespace_size(const char *str);
 int		empty_line(char *str);
+int		int_to_trgb(int t, int r, int g, int b);
+int		get_color(t_data *data, char *name);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 17:42:20 by adylewsk          #+#    #+#              #
-#    Updated: 2021/08/29 03:07:19 by adylewsk         ###   ########.fr        #
+#    Updated: 2021/08/30 01:15:40 by adylewsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC = main.c \
 		utils/utils.c utils/utils_ft.c \
 		close.c file.c data_initialization.c settings.c check.c \
 		get_map.c game/loop.c game/setup.c game/input.c game/update.c \
-		game/render.c game/put_pixel.c game/ray.c game/intersection.c
+		game/render.c game/put_pixel.c game/ray.c game/intersection.c \
+		game/walls.c
 
 SRCS = $(addprefix $(DIR_SRCS), $(SRC:.c=.o))
 

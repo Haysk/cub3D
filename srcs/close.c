@@ -6,19 +6,21 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:35:36 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 03:01:20 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 00:38:27 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub.h"
 
-int	free_textures(t_texture *textures)
+int	free_textures(t_data *data)
 {
-	while (textures->name)
+	while (data->textures->name)
 	{
-		if (textures->path != NULL)
-			free(textures->path);
-		textures++;
+		if (data->textures->path != NULL)
+			free(data->textures->path);
+		if (data->textures->img)
+			mlx_destroy_image(data->mlx, data->textures->img);
+		data->textures++;
 	}
 	return (TRUE);
 }
@@ -39,12 +41,12 @@ int	free_all(t_data *data)
 {
 	free_file(data);
 	printf("free all\n");
-	free_textures(data->textures);
+	free_textures(data);
 	ft_freetab(data->map);
 	return (TRUE);
 }
 
-int	close_mlx(t_data *data)
+int	close_mlx(t_data *data, int error)
 {
 	free_all(data);
 	if (data->rays)
@@ -58,5 +60,5 @@ int	close_mlx(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	exit(EXIT_SUCCESS);
+	exit(error);
 }

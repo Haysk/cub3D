@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:05:32 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 02:01:10 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/30 01:14:15 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ typedef struct s_texture
 {
 	char	*name;
 	char	*path;
+	void	*img;
+	int		*addr;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		is_set;
 }				t_texture;
 
@@ -54,7 +61,7 @@ typedef struct s_line
 typedef struct s_image {
 	void	*img;
 	int		*addr;
-	int		with;
+	int		width;
 	int		height;
 	int		bits_per_pixel;
 	int		line_length;
@@ -108,6 +115,16 @@ typedef struct s_ray
 	int		wall_hit_content;
 }				t_ray;
 
+typedef struct s_wall
+{
+	float	perp_dist;
+	float	proj_plane_dist;
+	float	proj_wall_height;
+	int		strip_height;
+	int		top_pixel;
+	int		bottom_pixel;
+}				t_wall;
+
 typedef struct s_data
 {
 	int			fd;
@@ -130,6 +147,7 @@ typedef struct s_data
 	t_rect		rect;
 	t_player	player;
 	t_image		renderer;
+	t_wall		wall;
 	float		rays_angle;
 	int			rays_num;
 	int			rays_id;
