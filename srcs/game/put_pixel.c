@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 01:45:42 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 03:30:07 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:10:18 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	my_put_pixel(t_image *renderer, int x, int y, int color)
 {
+	// printf("put : %i\n",renderer->line_length);
 	renderer->addr[y * renderer->line_length / 4 + x] = color;
 }
 
@@ -65,22 +66,31 @@ void	put_rect(t_rect rect, t_image *renderer, int color)
 
 void	put_texture(t_data *data, int i, int j)
 {
-	int	tex_x;
-	int	tex_y;
-	int	dist_top;
+	int			tex_x;
+	int			tex_y;
+	int			dist_top;
+	t_texture	*texture;
 
 	if (data->rays[i].hit_vertical)
 		tex_x = (int)data->rays[i].wall_hit_y % TILE_SIZE;
 	else
 		tex_x = (int)data->rays[i].wall_hit_x % TILE_SIZE;
+	if (!data->rays[i].hit_vertical && data->rays[i].face.down)
+		texture = get_texture(data, "NO");
+	else if (!data->rays[i].hit_vertical && data->rays[i].face.up)
+		texture = get_texture(data, "SO");
+	else if (data->rays[i].face.right)
+		texture = get_texture(data, "WE");
+	else
+		texture = get_texture(data, "EA");
 	while (j < data->wall.bottom_pixel)
 	{
 		dist_top = j + (data->wall.strip_height / 2) - (data->win_height / 2);
 		tex_y = dist_top
-			* ((float)data->textures[0].height / data->wall.strip_height);
+			* ((float)texture->height / data->wall.strip_height);
 		data->renderer.addr[j * data->renderer.line_length / 4 + i]
-			= data->textures[0].addr[tex_y
-			* data->textures[0].line_length / 4 + tex_x];
+			= texture->addr[tex_y
+			* texture->line_length / 4 + tex_x];
 		j++;
 	}
 }

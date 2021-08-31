@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:10:49 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 03:33:42 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:56:38 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ void	render_map(t_data *data)
 		while (x < data->map_x)
 		{
 			if (data->map[y][x] == '1')
-				data->color = 0xFFFFFF;
-			else if (data->map[y][x] == '0')
-				data->color = 0x000000;
-			put_rect(my_rect(x * TILE_SIZE * data->scale,
+				put_rect(my_rect(x * TILE_SIZE * data->scale,
 					y * TILE_SIZE * data->scale, TILE_SIZE * data->scale,
-					TILE_SIZE * data->scale), &data->renderer, data->color);
+					TILE_SIZE * data->scale), &data->renderer, 0xFFFFFF);
+			else if (data->map[y][x] == '0')
+				put_rect(my_rect(x * TILE_SIZE * data->scale,
+					y * TILE_SIZE * data->scale, TILE_SIZE * data->scale,
+					TILE_SIZE * data->scale), &data->renderer, 0x000000);
 			x++;
 		}
 		y++;

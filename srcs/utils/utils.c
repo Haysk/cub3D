@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 23:04:15 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 23:35:58 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:47:57 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,18 @@ int	get_color(t_data *data, char *name)
 		i++;
 	}
 	return (0);
+}
+
+t_texture	*get_texture(t_data *data, char *name)
+{
+	int	i;
+
+	i = 0;
+	while(data->textures[i].name)
+	{
+		if (!ft_strncmp(name, data->textures[i].name, ft_strlen(name) + 1))
+			return (&data->textures[i]);
+		i++;
+	}
+	return (NULL);
 }

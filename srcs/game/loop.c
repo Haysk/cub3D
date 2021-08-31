@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:06:34 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 23:44:46 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:16:27 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	start(t_data *data)
 	game_setup(data);
 	mlx_hook(data->win, 2, 1L << 0, key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, key_release, data);
-	mlx_hook(data->win, 33, 1L << 5, close_mlx, data);
+	mlx_hook(data->win, 33, 1L << 5, cross_close, data);
 	mlx_loop_hook(data->mlx, game_loop, data);
 	mlx_loop(data->mlx);
 	return (TRUE);

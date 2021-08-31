@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:35:36 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 00:38:27 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:11:33 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	free_file(t_data *data)
 int	free_all(t_data *data)
 {
 	free_file(data);
-	printf("free all\n");
 	free_textures(data);
 	ft_freetab(data->map);
 	return (TRUE);
@@ -61,4 +60,10 @@ int	close_mlx(t_data *data, int error)
 		free(data->mlx);
 	}
 	exit(error);
+	return (error);
+}
+
+int	cross_close(t_data *data)
+{
+	return (close_mlx(data, EXIT_SUCCESS));
 }

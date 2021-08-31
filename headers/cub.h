@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 19:31:37 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 01:44:51 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:10:19 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ t_inter		horizontal_inter(t_data *data, t_face face);
 t_inter		vertical_inter(t_data *data, t_face face);
 void		cast_all_rays(t_data *data, t_player *player);
 int			close_mlx(t_data *data, int error);
+int			cross_close(t_data *data);
 
 #endif

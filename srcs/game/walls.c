@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 22:01:19 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 03:32:25 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:01:19 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	set_wall(t_data *data, t_ray *rays, t_wall *wall, int i)
 {
 	wall->perp_dist = rays[i].distance
 		* cos(rays[i].ray_angle - data->player.rotation_angle);
+	if (wall->perp_dist <= 0)
+		wall->perp_dist = 1;
 	wall->proj_plane_dist = (data->win_width / 2) / tan(data->fov / 2);
 	wall->proj_wall_height = (TILE_SIZE / wall->perp_dist)
 		* wall->proj_plane_dist;

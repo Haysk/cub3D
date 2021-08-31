@@ -6,7 +6,7 @@
 #    By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 17:42:20 by adylewsk          #+#    #+#              #
-#    Updated: 2021/08/30 01:15:40 by adylewsk         ###   ########.fr        #
+#    Updated: 2021/08/31 19:11:47 by adylewsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3D
 # Compile
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 BUFFER = 64
 
 # MINILIBX

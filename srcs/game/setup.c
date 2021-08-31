@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:13:48 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 03:33:18 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:16:12 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	new_player(t_player *player)
 {
-	player->x *= TILE_SIZE;
-	player->y *= TILE_SIZE;
+	player->x = player->x * TILE_SIZE + (TILE_SIZE / 2);
+	player->y = player->y * TILE_SIZE + (TILE_SIZE / 2);
 	player->width = 1;
 	player->height = 1;
 	player->turn_direction = 0;
@@ -29,7 +29,7 @@ void	new_player(t_player *player)
 	if ((char)player->rotation_angle == 'N')
 		player->rotation_angle = 3;
 	player->rotation_angle *= PI / 2;
-	player->walk_speed = 4;
+	player->walk_speed = 5;
 	player->turn_speed = 2 * (PI / 180);
 }
 
@@ -96,8 +96,8 @@ int	textures(t_data *data, t_texture *textures)
 
 void	game_setup(t_data *data)
 {
-	data->win_width = data->map_x * TILE_SIZE;
-	data->win_height = data->map_y * TILE_SIZE;
+	data->win_width = 1920;
+	data->win_height = 1080;
 	data->scale = 0.25;
 	data->fov = 60 * (PI / 180);
 	data->renderer.img = NULL;

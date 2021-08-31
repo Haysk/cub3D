@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:30:54 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/29 23:31:56 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:48:00 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,20 @@
 # define LEFT 97
 # define RIGHT 100
 
-size_t	ft_tablen(char **tab);
-size_t	ft_intlen(int nbr);
+size_t		ft_tablen(char **tab);
+size_t		ft_intlen(int nbr);
 
-int		ft_findchar(char *str, char c);
-char	**my_split(char const *str, char *cutter);
+int			ft_findchar(char *str, char c);
+char		**my_split(char const *str, char *cutter);
 
-char	*ft_strjoin_gnl(char *s1, char *s2);
-int		get_next_line(int fd, char **line);
+char		*ft_strjoin_gnl(char *s1, char *s2);
+int			get_next_line(int fd, char **line);
 
-int		check_file_extension(char *path, char *str);
-size_t	whitespace_size(const char *str);
-int		empty_line(char *str);
-int		int_to_trgb(int t, int r, int g, int b);
-int		get_color(t_data *data, char *name);
+int			check_file_extension(char *path, char *str);
+size_t		whitespace_size(const char *str);
+int			empty_line(char *str);
+int			int_to_trgb(int t, int r, int g, int b);
+int			get_color(t_data *data, char *name);
+t_texture	*get_texture(t_data *data, char *name);
 
 #endif
