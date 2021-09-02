@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:13:48 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 01:42:26 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:06:24 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	new_player(t_player *player)
 	if ((char)player->rotation_angle == 'N')
 		player->rotation_angle = 3;
 	player->rotation_angle *= PI / 2;
-	player->walk_speed = 5;
+	player->walk_speed = 10;
 	player->turn_speed = 2 * (PI / 180);
 }
 

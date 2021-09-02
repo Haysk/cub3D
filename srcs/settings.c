@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:43:04 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 02:52:50 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:02:06 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	set_colors(char **tab, t_color *colors)
 {
-	if (colors->red < 0)
+	if (!colors->is_set)
 	{
 		if (ft_tablen(tab) == 3 && ft_tabisdigit(tab))
 		{
@@ -23,18 +23,17 @@ int	set_colors(char **tab, t_color *colors)
 			colors->blue = ft_atoi(tab[2]);
 			if (colors->red > 255 || colors->green > 255
 				||  colors->blue > 255)
-				return (ERROR);
-			colors->is_set = 1;
+				return (FALSE);
+			colors->is_set = TRUE;
 			return (TRUE);
 		}
-		return (ERROR);
 	}
 	return (FALSE);
 }
 
 int	set_textures(char **tab, t_texture *textures)
 {
-	if (textures->is_set == 0)
+	if (!textures->is_set)
 	{
 		if (ft_tablen(tab) == 1)
 		{
@@ -52,7 +51,7 @@ int	tab_funptr(char **tab, t_data *data)
 
 	i = 0;
 	if (!*tab || !tab[1])
-		return (ERROR);
+		return (FALSE);
 	while (data->colors[i].name)
 	{
 		if (ft_strncmp(*tab, data->colors[i].name, ft_strlen(*tab) + 1) == 0)
@@ -66,7 +65,7 @@ int	tab_funptr(char **tab, t_data *data)
 			return (set_textures(tab + 1, &data->textures[i]));
 		i++;
 	}
-	return (ERROR);
+	return (FALSE);
 }
 
 int	set_params(t_data *data)
@@ -74,7 +73,7 @@ int	set_params(t_data *data)
 	char	**tab;
 
 	tab = my_split(data->line, SEPARATORS);
-	if (tab_funptr(tab, data) == ERROR)
+	if (!tab_funptr(tab, data))
 	{
 		ft_freetab(tab);
 		return (FALSE);

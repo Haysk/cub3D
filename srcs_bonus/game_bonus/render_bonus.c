@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:10:49 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 03:03:43 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:09:29 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	render_player(t_data *data, t_player *player)
 	rect = my_rect(player->x * data->scale, player->y * data->scale,
 			player->width * data->scale, player->height * data->scale);
 	line = my_line(player->x * data->scale, player->y * data->scale,
-			data->scale * player->x + cos(player->rotation_angle) * (25 * data->scale),
-			data->scale * player->y + sin(player->rotation_angle) * (25 * data->scale));
+			data->scale * player->x + cos(player->rotation_angle)
+			* (25 * data->scale),
+			data->scale * player->y + sin(player->rotation_angle)
+			* (25 * data->scale));
 	put_rect(rect, &data->renderer, 0xFFFFFF);
 	put_line(line, &data->renderer, 0xFFFFFF);
 }
@@ -32,6 +34,9 @@ void	render_map(t_data *data)
 	int	x;
 
 	y = 0;
+	put_rect(my_rect(0,
+			0, data->map_height * data->scale,
+			data->map_width * data->scale), &data->renderer, 0x000000);
 	while (y < data->map_y)
 	{
 		x = 0;

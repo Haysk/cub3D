@@ -27,7 +27,6 @@ int	inter_wall_detect(t_data *data, int check_x, int check_y, t_inter *axe)
 		x = (int)floor(check_x / TILE_SIZE);
 		if (x >= data->map_y)
 			x = data->map_y - 1;
-		axe->wall_content = data->map[y][x];
 		axe->found_wall_hit = TRUE;
 		return (TRUE);
 	}
@@ -41,7 +40,6 @@ void	init_horizontal(t_data *data, t_inter *horiz, t_face face)
 	horiz->found_wall_hit = FALSE;
 	horiz->wall_hit_x = 0;
 	horiz->wall_hit_y = 0;
-	horiz->wall_content = 0;
 	horiz->intercept_y = floor(data->player.y / TILE_SIZE) * TILE_SIZE;
 	if (face.down)
 		horiz->intercept_y += TILE_SIZE;
@@ -86,7 +84,6 @@ void	init_vertical(t_data *data, t_inter *verti, t_face face)
 	verti->found_wall_hit = FALSE;
 	verti->wall_hit_x = 0;
 	verti->wall_hit_y = 0;
-	verti->wall_content = 0;
 	verti->intercept_x = floor(data->player.x / TILE_SIZE) * TILE_SIZE;
 	if (face.right)
 		verti->intercept_x += TILE_SIZE;

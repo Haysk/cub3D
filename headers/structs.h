@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:05:32 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 01:40:52 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:08:34 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ typedef struct s_inter
 	int		found_wall_hit;
 	float	wall_hit_x;
 	float	wall_hit_y;
-	float	wall_content;
 	float	next_touch_x;
 	float	next_touch_y;
 	float	hit_distance;
@@ -113,7 +112,6 @@ typedef struct s_ray
 	float	distance;
 	int		hit_vertical;
 	t_face	face;
-	int		wall_hit_content;
 }				t_ray;
 
 typedef struct s_wall

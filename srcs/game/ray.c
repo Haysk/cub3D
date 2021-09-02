@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:48:25 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 01:34:26 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 13:09:08 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	set_ray(t_data *data, t_inter horiz, t_inter verti, t_face ray_facing)
 		data->rays[data->rays_id].distance = verti.hit_distance;
 		data->rays[data->rays_id].wall_hit_x = verti.wall_hit_x;
 		data->rays[data->rays_id].wall_hit_y = verti.wall_hit_y;
-		data->rays[data->rays_id].wall_hit_content = verti.wall_content;
 		data->rays[data->rays_id].hit_vertical = TRUE;
 	}
 	else
@@ -40,7 +39,6 @@ void	set_ray(t_data *data, t_inter horiz, t_inter verti, t_face ray_facing)
 		data->rays[data->rays_id].distance = horiz.hit_distance;
 		data->rays[data->rays_id].wall_hit_x = horiz.wall_hit_x;
 		data->rays[data->rays_id].wall_hit_y = horiz.wall_hit_y;
-		data->rays[data->rays_id].wall_hit_content = horiz.wall_content;
 		data->rays[data->rays_id].hit_vertical = FALSE;
 	}
 	data->rays[data->rays_id].ray_angle = data->rays_angle;
