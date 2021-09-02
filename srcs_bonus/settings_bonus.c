@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.c                                         :+:      :+:    :+:   */
+/*   settings_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:43:04 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 02:52:50 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/01 19:45:31 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	set_params(t_data *data)
 {
 	char	**tab;
 
-	tab = my_split(data->line, SEPARATORS);
+	tab = my_split(data->line, SEPARATORS);;
 	if (tab_funptr(tab, data) == ERROR)
 	{
 		ft_freetab(tab);

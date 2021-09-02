@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:30:54 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/31 17:48:00 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/01 17:30:32 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define DOWN 115
 # define LEFT 97
 # define RIGHT 100
+# define RIGHT_ARROW 65363
+# define LEFT_ARROW 65361
 
 size_t		ft_tablen(char **tab);
 size_t		ft_intlen(int nbr);

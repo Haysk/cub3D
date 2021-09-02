@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:05:32 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/30 01:14:15 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 01:40:52 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_player
 	float	height;
 	int		turn_direction;
 	int		walk_direction;
+	int		walk_side_direction;
 	float	rotation_angle;
 	float	walk_speed;
 	float	turn_speed;
@@ -143,6 +144,8 @@ typedef struct s_data
 	void		*win;
 	int			win_width;
 	int			win_height;
+	int			map_width;
+	int			map_height;
 	float		fov;
 	t_rect		rect;
 	t_player	player;

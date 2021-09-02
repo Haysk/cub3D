@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   setup_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 02:13:48 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 03:06:19 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 01:42:26 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ void	game_setup(t_data *data)
 	data->win_height = 1080;
 	data->map_width = data->map_x * TILE_SIZE;
 	data->map_height = data->map_y * TILE_SIZE;
-	data->scale = data->map_y / (data->win_height * 0.25);
-	if (data->scale > data->map_x / (data->win_width * 0.25))
-		data->scale = data->map_x / (data->win_width * 0.25);
+	data->scale = (data->win_height * 0.25) / (data->map_y * TILE_SIZE);
+	if (data->scale > (data->win_width * 0.25) / (data->map_x * TILE_SIZE))
+		data->scale = (data->win_width * 0.25) / (data->map_x * TILE_SIZE);
 	data->fov = 60 * (PI / 180);
 	data->renderer.img = NULL;
 	data->rays_num = data->win_width;
