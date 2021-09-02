@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 19:32:33 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/26 20:37:04 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 15:16:12 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,7 @@ int	get_params(char *file)
 
 int	main(int argc, char **argv)
 {
-	if (argc > 1 && argc < 4)
-	{
-		if (argc == 3 && ft_strncmp(argv[2], "--save", 7) != 0)
-			return (my_error(1, NULL));
+	if (argc == 2)
 		return (get_params(argv[1]));
-	}
 	return (my_error(1, NULL));
 }

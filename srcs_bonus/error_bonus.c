@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:33:49 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/08/25 19:06:13 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 15:16:41 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	my_error(int error, char *str)
 {
 	if (error == 1)
-		printf("ERROR\nArgument : cub3D filename.cub [--save]\n");
+		printf("ERROR\nArgument : cub3D filename.cub\n");
 	if (error == 2)
 		printf("ERROR\nopen_file : File must be in %s\n", str);
 	if (error == 3)
