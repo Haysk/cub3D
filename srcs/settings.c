@@ -6,7 +6,7 @@
 /*   By: adylewsk <adylewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 22:43:04 by adylewsk          #+#    #+#             */
-/*   Updated: 2021/09/02 14:02:06 by adylewsk         ###   ########.fr       */
+/*   Updated: 2021/09/02 15:32:06 by adylewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	set_colors(char **tab, t_color *colors)
 			colors->green = ft_atoi(tab[1]);
 			colors->blue = ft_atoi(tab[2]);
 			if (colors->red > 255 || colors->green > 255
-				||  colors->blue > 255)
+				|| colors->blue > 255)
 				return (FALSE);
 			colors->is_set = TRUE;
 			return (TRUE);
